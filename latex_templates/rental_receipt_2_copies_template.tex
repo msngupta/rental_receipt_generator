@@ -1,0 +1,84 @@
+%%template_top_start%%
+\documentclass[10pt]{report}
+\usepackage[a5paper,landscape]{geometry}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage{nopageno}
+\usepackage{setspace}
+\linespread{1.3}
+\usetikzlibrary{calc}
+
+\begin{document}
+%%template_top_end%%
+%%template_repeat_start%%
+
+\begin{tikzpicture}[remember picture, overlay]
+  \draw[line width = 2pt,dashed] ($(current page.center) + (-4in,0in)$) -- ($(current page.center) + (4in,0in)$);
+\end{tikzpicture}
+
+\tikzstyle{mybox} = [draw=black, very thick,
+rectangle, inner sep=10pt, inner ysep=10pt]
+\begin{tikzpicture}[remember picture,overlay]
+\node [mybox,anchor=north west] (box) at ([shift={(1cm,-0.5cm)}]current page.north west){
+\begin{minipage}{1.15\linewidth}
+    \begin{center}
+        {\large \textbf{Monthly Rent Receipt - Landlord's Copy}}
+    \end{center}
+    \begin{tabular}{ l l }
+    Date of Receipt: & \underline{%(receiptdate)s}\\
+    Medium of payment: & \underline{%(medium)s}\\
+    Amount Received: & \underline{%(amount)s}\\
+    Payment for: & \underline{%(paymentfor)s}\\
+    Tenant's name: & \underline{%(tenantname)s}\\
+    Address of the Rental Unit: & \underline{%(address)s}\\
+    Landlord's name: & \underline{%(landlordname)s}\\
+    \\ 
+    &\hfill$\overline{\textnormal{Landlord's signature}}$
+    \end{tabular}
+    \end{minipage}
+    };
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[remember picture,overlay]
+\node [mybox,anchor=south west] (box) at ([shift={(1cm,0.5cm)}]current page.south west){
+\begin{minipage}{1.15\linewidth}
+    \begin{center}
+        {\large \textbf{Monthly Rent Receipt - Tenant's Copy}}
+    \end{center}
+    \begin{tabular}{ l l }
+    Date of Receipt: & \underline{%(receiptdate)s}\\
+    Medium of payment: & \underline{%(medium)s}\\
+    Amount Received: & \underline{%(amount)s}\\
+    Payment for: & \underline{%(paymentfor)s}\\
+    Tenant's name: & \underline{%(tenantname)s}\\
+    Address of the Rental Unit: & \underline{%(address)s}\\
+    Landlord's name: & \underline{%(landlordname)s}\\
+    \\ 
+    &\hfill$\overline{\textnormal{Landlord's signature}}$
+    \end{tabular}
+    \end{minipage}
+    };
+\end{tikzpicture}
+
+%%template_repeat_end%%
+
+%%template_join_alternate_start%%
+\begin{tikzpicture}[remember picture, overlay]
+  \draw[line width = 2pt] ($(current page.south west) + (0in,0.05in) $) -- ($(current page.south east) + (0in,0.05in) $);
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture, overlay]
+  \draw[line width = 2pt] ($(current page.south west) + (0in,0.1in) $) -- ($(current page.south east) + (0in,0.1in) $);
+\end{tikzpicture}
+\newpage
+%%template_join_alternate_end%%
+
+
+%%template_join_start%%
+\newpage
+%%template_join_end%%
+%%template_bottom_start%%
+\end{document}
+%%template_bottom_end%%
+
